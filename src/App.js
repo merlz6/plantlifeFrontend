@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import PlantCardHolder from './components/PlantCardHolder.js'
+import { Route, Switch } from 'react-router-dom'
+import PlantCard from './components/PlantCard.js'
 
 function App() {
+
+  let [plants, setPlants] = useState([])
+  let [page, setPage] = useState(1)
+
+
+   useEffect(()=> {
+     getAllPlants()
+
+  })
+
+  function getAllPlants(){
+    fetch(`http://localhost:3000/plant/${page}`)
+    .then((data) => data.json())
+    .then(response =>setPlants(response.data))
+  }
+
+
+  function getNextPlants(){
+    setPlants([])
+    setPage(page + 1)
+    console.log(page)
+    getAllPlants()
+  }
+
+if(!plants.length > 1 ){
+  return null
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <h1>React App</h1>
+
+       <PlantCardHolder plants={plants}/>
+       <button onClick={getNextPlants}> Get More </button>
+
+
     </div>
   );
 }
