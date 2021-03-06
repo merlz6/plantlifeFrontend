@@ -13,7 +13,7 @@ function PlantCardHolder(props) {
     // console.log(plant)
     return (
 
-    <PlantCard plant={plant} key={index}/>
+    <PlantCard plant={plant} key={index} showPlantList={props.showPlantList} showSinglePlant={props.showSinglePlant}/>
 
 
     )

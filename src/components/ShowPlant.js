@@ -3,7 +3,7 @@ import React from 'react';
 
 
 
-function PlantCard(props) {
+function ShowPlant(props) {
 
   const {plant} = props
 
@@ -17,13 +17,12 @@ function PlantCard(props) {
     <div className="plantCardSizer">
       <img className="plantcardimage" src={plant.image_url} alt="Image Unavailable" />
       <p>{plant.common_name} </p>
-      <p><i>{plant.scientific_name}</i></p>
-
-      <button onClick={()=>{props.showSinglePlant(plant)}}>Show Me More </button>
+      <i>{plant.scientific_name}</i>
+      <button onClick={()=> {props.showPlantList()} } > Back to List </button>
       </div>
     </div>
 
   );
 }
 
-export default PlantCard;
+export default ShowPlant;
