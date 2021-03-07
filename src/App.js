@@ -19,7 +19,7 @@ function App() {
   })
 
   function getAllPlants(){
-    fetch(`https://plantlifebackend.herokuapp.com/${page}`)
+    fetch(`https://plantlifebackend.herokuapp.com/plant/${page}`)
     .then((data) => data.json())
     .then(response =>setPlants(response.data))
   }
