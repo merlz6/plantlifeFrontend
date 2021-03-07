@@ -19,7 +19,7 @@ function App() {
   })
 
   function getAllPlants(){
-    fetch(`http://localhost:3000/plant/${page}`)
+    fetch(`https://plantlifebackend.herokuapp.com/${page}`)
     .then((data) => data.json())
     .then(response =>setPlants(response.data))
   }
@@ -62,7 +62,7 @@ if(!plants.length > 1 ){
     </nav>
     <h1>Mikes Plants</h1>
     {!hideList ?
-      <div class="main">
+      <div className="main">
         <button onClick={getNextPlants}> Previous Page </button>
          <PlantCardHolder showSinglePlant={showSinglePlant} showPlantList={showPlantList} plants={plants}/>
          <button onClick={getNextPlants}> Next Page </button>

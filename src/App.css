@@ -47,3 +47,7 @@
   display: grid;
   grid-template-columns: .5fr 9fr .5fr;
 }
+.cardBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
