@@ -1,7 +1,10 @@
+
+
 .App {
   text-align: center;
-  background-image: url("https://previews.123rf.com/images/glopphy/glopphy1302/glopphy130200026/17810439-leave-and-ladybugs-frame-background.jpg");
+  background-image: url("https://cdn.britannica.com/84/73184-004-E5A450B5/Sunflower-field-Fargo-North-Dakota.jpg");
   background-size: cover;
+  min-height:100vh;
 }
 
 .App-logo {
@@ -37,11 +40,15 @@
 }
 .plantCard{
   margin-bottom: 10px;
+  height:320px;
+
 }
 .plantCardSizer {
   margin: 0 auto;
   border:1px solid grey;
   width:250px;
+  height:320px;
+  background-color: lightGrey;
 }
 .main {
   display: grid;
@@ -50,4 +57,35 @@
 .cardBody {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.cardBody p {
+  height:36px;
+}
+
+.SearchFormHolder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: lightGrey;
+  height:60px;
+}
+/* form {
+  margin-top: 25px;
+} */
+input {
+  height:2rem;
+  vertical-align: text-bottom;
+}
+.submit {
+  height:40px;
+  vertical-align: baseline;
+}
+.showPlantCard {
+  height: 600px;
+
+}
+.showCardBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: lightGrey;
 }

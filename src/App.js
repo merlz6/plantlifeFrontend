@@ -4,6 +4,7 @@ import PlantCardHolder from './components/PlantCardHolder.js'
 import { Route, Switch } from 'react-router-dom'
 import PlantCard from './components/PlantCard.js'
 import ShowPlant from './components/ShowPlant.js'
+import SearchForm from './components/SearchForm';
 
 function App() {
 
@@ -11,17 +12,22 @@ function App() {
   let [page, setPage] = useState(1)
   let [showPlant, setShowPlant] = useState({})
   let [hideList, setHideList] = useState(false)
+  let [searchString, setSearchString] = useState('');
 
 
    useEffect(()=> {
      getAllPlants()
 
+
   })
 
   function getAllPlants(){
-    fetch(`https://plantlifebackend.herokuapp.com/plant/${page}`)
-    .then((data) => data.json())
-    .then(response =>setPlants(response.data))
+    if(plants.length < 2){
+      fetch(`http://localhost:3000/plant/${page}`)
+      .then((data) => data.json())
+      .then(response => setPlants(response.data))
+    }
+
   }
 
 
@@ -50,6 +56,26 @@ function showPlantList(){
   setHideList(false)
 }
 
+function searchByCommon(search){
+  fetch(`http://localhost:3000/plant/plant/${search}`)
+  .then((data) => data.json())
+  .then(response =>setPlants(response.data))
+
+}
+
+
+function handleChange(event) {
+  setSearchString(event.target.value);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  searchByCommon(searchString);
+}
+
+
+
+
 
 if(!plants.length > 1 ){
   return null
@@ -57,13 +83,15 @@ if(!plants.length > 1 ){
 
   return (
     <div className="App">
-    <nav>
-
-    </nav>
-    <h1>Mikes Plants</h1>
+    <SearchForm
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      searchString={searchString}
+    />
+    
     {!hideList ?
       <div className="main">
-        <button onClick={getNextPlants}> Previous Page </button>
+        <button onClick={getPrevPlants}> Previous Page </button>
          <PlantCardHolder showSinglePlant={showSinglePlant} showPlantList={showPlantList} plants={plants}/>
          <button onClick={getNextPlants}> Next Page </button>
       </div> : ''}

@@ -10,10 +10,10 @@ function ShowPlant(props) {
 
   return (
 
-    <div className="plantCard">
+    <div className="showplantCard">
     <div className="plantCardSizer">
       <img className="plantcardimage" src={plant.image_url} alt="Image Unavailable" />
-      <div className="cardBody">
+      <div className="showCardBody">
       <div style={{'border-right':'1px solid black'}}>
       <p>Common Name: </p>
       <p>Scientific Name:</p>
